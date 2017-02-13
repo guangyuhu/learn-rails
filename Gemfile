@@ -25,10 +25,13 @@ gem 'bootstrap-sass'
 gem 'gibbon'
 gem 'high_voltage'
 gem 'simple_form'
+gem 'thin'
 group :development do
   gem 'better_errors'
   gem 'rails_layout'
   gem 'sqlite3'
+  gem 'capistrano', '~> 3.6'
+  gem 'capistrano-rails', '~> 1.2'
 end
 group :production do
   gem 'pg'
@@ -36,4 +39,7 @@ end
 group :test do
   gem 'minitest-spec-rails'
   gem 'minitest-rails-capybara'
+  gem 'simplecov'
+  gem 'simplecov-json'
+  gem 'simplecov-rcov'
 end
