@@ -4,15 +4,9 @@ lock "3.7.2"
 set :application, "learn-rails"
 set :repo_url, "https://github.com/guangyuhu/learn-rails.git"
 
-desc 'Restart application'
-task :restart do
-  on roles(:app), in: :sequence, wait: 5 do
-    execute "service thin restart"  ## -> line you should add
-  end
-end
+after 'deploy:publishing', 'thin:restart'
 
-after 'deploy:publishing', 'deploy:restart'
-
+# Define all the tasks that need to be running manually after Capistrano is finished.
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
