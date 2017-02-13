@@ -36,4 +36,7 @@ end
 group :test do
   gem 'minitest-spec-rails'
   gem 'minitest-rails-capybara'
+  gem 'simplecov'
+  gem 'simplecov-json'
+  gem 'simplecov-rcov'
 end
