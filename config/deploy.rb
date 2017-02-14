@@ -3,6 +3,15 @@ lock "3.7.2"
 
 set :application, "learn-rails"
 set :repo_url, "https://github.com/guangyuhu/learn-rails.git"
+task :execute_on_server do
+  on "root@178.62.7.77" do
+    if pid = `ps -ef | grep thin | grep -v grep | sort -r | sed -n 2p | awk '{print $2}'`
+      puts "=> Killing existing server with pid #{pid}"
+      `kill -9 #{pid}`
+    end
+  end
+end
+:execute_on_server
 
 after 'deploy:publishing', 'thin:restart'
 

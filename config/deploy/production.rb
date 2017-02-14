@@ -9,6 +9,7 @@
 server '178.62.7.77', user: 'root', roles: %w{app db web}
 
 
+
 # role-based syntax
 # ==================
 
