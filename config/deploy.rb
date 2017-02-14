@@ -4,17 +4,7 @@ lock "3.7.2"
 set :application, "learn-rails"
 set :repo_url, "https://github.com/guangyuhu/learn-rails.git"
 
-task :kill_thin do
-  on "root@178.62.7.77" do
-    if pid = `ps -ef | grep thin | grep -v grep | sort -r | awk '{print $2}'`
-      puts "=> Killing existing server with pid #{pid}"
-      `kill -9 #{pid}`
-    end
-  end
-end
-
-after 'deploy:publishing', 'kill_thin'
-after 'kill_thin', 'thin:start'
+after 'deploy:publishing', 'thin:start'
 
 # Define all the tasks that need to be running manually after Capistrano is finished.
 
